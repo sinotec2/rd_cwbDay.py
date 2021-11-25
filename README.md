@@ -16,4 +16,9 @@ Reading CWB Daily Report csv-files from Surface Automatic Station System
 - perform the scritp every day noon time
 ```
   0 12  *  *  * kuang /home/backup/data/cwb/e-service/get_cwb.sh >& /home/backup/data/cwb/e-service/get_cwb.out
-```  
+```
+
+## more description
+see [github.io](https://sinotec2.github.io/jtd/docs/wind_models/cwb_daily_download/)(in Chinese)
+
+upload date: 2021-11-25 17:39:46
