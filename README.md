@@ -1,4 +1,4 @@
-# rd_cwbDay.py
+# [rd_cwbDay.py](https://github.com/sinotec2/rd_cwbDay.py/blob/main/rd_cwbDay.py)
 Reading CWB Daily Report csv-files from Surface Automatic Station System
 
 ## dependency
@@ -6,10 +6,10 @@ Reading CWB Daily Report csv-files from Surface Automatic Station System
 - modules used
   - pandas
   - bs4
-- station definition csv: stats_tab.csv
+- station definition csv: [stats_tab.csv](https://github.com/sinotec2/rd_cwbDay.py/blob/main/stats_tab.csv)
 
 ## batch scripts
-- filename: get_cwb.sh
+- filename: [get_cwb.sh](https://github.com/sinotec2/rd_cwbDay.py/blob/main/get_cwb.sh)
 - purpose: perform python and naming the resultant csv file as "cwbYYYYMMDD.csv"
 
 ## crontab
