@@ -1,4 +1,4 @@
-#!/cluster/miniconda/envs/py37/bin/python
+#!/cluster/miniconda/envs/py27/bin/python
 # -*- coding: UTF-8
 from pandas import *
 from bs4 import BeautifulSoup
@@ -26,10 +26,10 @@ def is_date_valid(date):
 date = getarg()
 if not  is_date_valid(date):sys.exit('not invalid:'+date)
 ymd = int(date.replace('-', ''))
-dir = '/autofs/master/backup/data/cwb/e-service/read_web/'
+dir = '/home/backup/data/cwb/e-service/read_web/'
 dir1 = dir + '../' + date[:4] + '/'
 fnameO=dir1 + 'cwb' + str(ymd) + '.csv'
-if os.path.isfile(fnameO):sys.exit('file_exit:'+date)
+#if os.path.isfile(fnameO):sys.exit('file_exit:'+date)
 #touch and open for keeping from writing by others
 os.system('touch '+fnameO)
 ftext=open(fnameO,'w')
@@ -38,7 +38,7 @@ batcmd="date +%H"
 ymdh = int(subprocess.check_output(batcmd, shell=True)[:-1])
 dayt=0
 if ymdh<19 and ymdh>=8:dayt=10
-mal = ['T', 'V', '/', 'X']
+mal = ['T', 'V', '/', 'X','&amp;']
 dfS = read_csv(dir + 'stats_tab.csv')
 h0 = 'https://e-service.cwb.gov.tw/HistoryDataQuery/'
 h1 = 'DayDataController.do\?command=viewMain\&station\='
@@ -48,9 +48,9 @@ h3 = '\&datepicker\='
 ib = 0
 for ii in range(ib, len(dfS)):
   orig = h1 + dfS.loc[ii, 'stno'] + h2 + dfS.loc[ii, 'url_nam25'] + h3 + date
-  os.system('wget ' + h0 + orig + ' -O cwbDay.html')
+  os.system('curl ' + h0 + orig + ' -o cwbDay.html')
   fname = 'cwbDay.html'
-  fn = open(fname, 'r',encoding='utf8')
+  fn = open(fname, 'r')
   soup = BeautifulSoup(fn, 'html.parser')
 
   if ii == ib:
@@ -95,9 +95,8 @@ for ii in range(ib, len(dfS)):
     df = dfi
   else:
     df = df.append(dfi, ignore_index=True)
-  print(ii)
-  sec=str(round(np.random.rand(1)[0]*dayt,2))
-  os.system('sleep '+sec+'s')
+#  sec=str(round(np.random.rand(1)[0]*dayt,2))
+#  os.system('sleep '+sec+'s')
   #  ifname+=1
 
 os.system('mkdir -p ' + dir1)
