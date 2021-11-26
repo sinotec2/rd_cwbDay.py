@@ -2,7 +2,7 @@
 Reading CWB Daily Report csv-files from Surface Automatic Station System
 
 ## dependency
-- python 3
+- python 2
 - modules used
   - pandas
   - bs4
